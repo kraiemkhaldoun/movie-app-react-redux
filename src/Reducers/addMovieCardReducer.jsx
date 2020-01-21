@@ -1,0 +1,10 @@
+const AddMovieCardReducer =(state=[{tab:[{class:"fas fa-star",i:0},{class:"fas fa-star",i:1},{class:"fas fa-star",i:2},{class:"fas fa-star",i:3},{class:"fas fa-star",i:4}],name:'Titanic',image:"https://img.ohmymag.com/article/culture/titanic-les-differences-du-film-par-rapport-a-la-realite_801bef5dcd343e2ff775b8cf07dc4e576512c4f2.jpg",rate:5,year:1997,key:Math.random(),description:"Titanic est une romance dramatique américaine écrite, produite et réalisée par James Cameron, sortie en 1997. Intégrant à la fois des aspects historiques et fictionnels, le film est basé sur le récit du naufrage du RMS Titanic et met en vedette Leonardo DiCaprio et Kate Winslet."},{tab:[{class:"fas fa-star",i:0},{class:"fas fa-star",i:1},{class:"fas fa-star",i:2},{class:"fas fa-star",i:3},{class:"far fa-star",i:4}],name:'When in Roma',image:"https://img4.cdn.cinoche.com/images/f7542a3169afa001117a8ab26f789eb2.jpg",rate:5,year:2010,key:Math.random(),description:"Beth, conservatrice, mène une vie professionnelle très réussie mais n'arrive pas à avoir une relation amoureuse durable. En apprenant que sa jeune soeur se marie sur un coup de tête à Rome, elle fait alors le voyage jusqu'à la capitale et récupère des pièces trouvées au fond d'une célèbre fontaine de l'amour. De retour aux États-Unis, elle découvre qu'une multitude de soupirants l'attendent."}],action)=>
+{
+    if (action.type==='ADD_MOVIE_CARD'){return state=[...state,{tab:action.payload.tab2.slice(0,action.payload.rate).concat(action.payload.tab1.slice(action.payload.rate)),name:action.payload.name,image:action.payload.image,rate:action.payload.rate,year:action.payload.year,key:Math.random(),description:action.payload.description}]}
+    else if (action.type==='EDIT'){let newName=prompt("Edit your movie title", "")
+    return state.map(el => (el.key===action.payload) ? {...el,name:newName}:el)}
+    else if (action.type==="REMOVE"){return state= state.filter(el=> el.key!==action.payload)}
+    else return state
+}
+
+export default AddMovieCardReducer
